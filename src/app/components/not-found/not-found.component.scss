@@ -1,0 +1,12 @@
+.btn-not-found{
+    background-color: green;
+    padding: 20px, 40px;
+    border-radius: 5px;
+    color: #fff;
+   border: none;
+   transition: all 0.8s;
+   &:hover{
+    padding: 30px;
+    color: #bbb;
+   }
+}

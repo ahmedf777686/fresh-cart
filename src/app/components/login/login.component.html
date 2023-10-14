@@ -1,0 +1,42 @@
+<section class="">
+    <h2>Register Now</h2>
+
+    <form [formGroup]="login" (submit)="handelform()" class="p-3">
+        
+
+
+        <div>
+            <label class="py-2" for="email">email</label>
+            <input formControlName="email" class="form-control" type="email"  id="email">
+            <div  *ngIf="login.get('email')?.errors&&(login.get('email')?.touched||login.get('email')?.value.length>0)" class="alert alert-danger">
+                <p *ngIf="login.get('email')?.getError('required')">email is required</p>
+                <p *ngIf="login.get('email')?.getError('email')">email is valid </p>
+           
+            
+            </div>
+        </div>
+
+
+        <div>
+            <label class="py-2" for="password">password</label>
+            <input formControlName="password" class="form-control" type="password"  id="password">
+
+    
+            <div  *ngIf="login.get('password')?.errors&&(login.get('password')?.touched||login.get('password')?.value.length>0)" class="alert alert-danger">
+                <p *ngIf="login.get('password')?.getError('required')">password is required</p>
+                <p *ngIf="login.get('password')?.getError('pattern')">password is valid </p>
+           
+            
+            </div>
+
+        </div>
+        
+        
+        <p class="alert alert-danger" *ngIf="errmes">{{errmes}}</p>
+<div role="button" class="d-flex justify-content-between align-items-center">
+    <button [disabled]="login.invalid" class="main-btn mt-2"> login<i *ngIf="isloading" class="fa fa-spin fa-spinner"></i></button>
+<p routerLink="/forgotpassword" class="text-main fw-bolder ">forgotPassword</p>
+</div>
+    </form>
+</section>
+

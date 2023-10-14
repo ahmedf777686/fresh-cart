@@ -1,0 +1,13 @@
+<section>
+    <div class="row g-3">
+        <div *ngFor="let item of data" class="col-md-2">
+<div>
+    <img class="w-100" [src]="item.imageCover" alt="">
+</div>
+<div>
+    <h6 class="text-main">{{item.category.name|text}}</h6>
+    <h6 class="text-main">{{item.price}}</h6>
+</div>
+        </div>
+    </div>
+</section>

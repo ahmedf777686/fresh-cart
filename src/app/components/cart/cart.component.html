@@ -1,0 +1,38 @@
+<section *ngIf="cartdata;else x" class="py-4 w-75 mx-auto">
+  <div class="d-flex justify-content-between align-items-center w-100">
+    <div>
+        <h2>shop cart</h2>
+        <span class="text-main">Total price :{{cartdata.totalCartPrice | currency:'EGP'}}</span>
+    </div>
+  
+    <div>
+        <button (click)="clearcart()" class="btn btn-outline-danger">clearcart</button>
+    </div>
+  </div>
+    <div class="row border-bottom py-2" *ngFor="let item of cartdata.products">
+        <div class="col-md-1">
+<img class="w-100" [src]="item.product.imageCover" alt="">
+        </div>
+        <div class="col-md-11 d-flex justify-content-between align-items-center">
+          
+           <div>
+            <h2  class="h6 text-main">{{item.product.title |text}}</h2>
+            <h2 class="h6">{{item.product.category.name}}</h2>
+            <button (click)="removecart(item.product._id)" class="btn btn-outline-success"> <i class="fa fa-trash text-main mx-1"></i>Remove</button>
+           </div>
+           <div>
+          <button  (click)="updatacart(item.product._id,item.count +1)" class="btn border-success">+</button>
+          <span>{{item.count}}</span>
+          <button  (click)="updatacart(item.product._id,item.count -1)" class="btn border-success">-</button>
+            
+           </div>
+        </div>
+
+
+       
+    </div>
+   <button [routerLink]="['/payment',cartdata._id]" class="main-btn mt-2">Online payment <img height="20px" src="./assets/images/visa-1.svg" alt=""></button>
+</section>
+<ng-template #x>
+    <h3 class="text-main text-center mt-1">There is nothing you need to add to the product</h3>
+</ng-template>
